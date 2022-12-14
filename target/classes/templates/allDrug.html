@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>药品展示</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"rel="stylesheet">
+</head>
+<body>
+<div class="container">
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    <small>药品列表 —— 所有药品</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 column">
+            <a class="btn btn-primary"href="/drug/toAddDrug">新增</a>
+            <a class="btn btn-primary"href="/drug/allDrug">显示全部药品</a>
+        </div>
+        <div class="col-md-4 column" style="float:right">
+            <form action="/drug/queryDrug" method="post" class="form-inline">
+                <span th:text="${err}" style="color:red;font-weight: bold"></span>
+                <input type="text" name="queryDrugName" placeholder="输入您要搜索的药品名称~">
+                <input type="submit" value="寻找" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+
+    <div class="row clearfix" style="margin-top: 5px">
+        <div class="col-md-12 column">
+            <table class="table table-hover table-striped">
+
+                <thread>
+                    <tr>
+                        <th>药品代码</th>
+                        <th>药品名</th>
+                        <th>价格</th>
+                        <th>商家</th>
+                        <th>类别</th>
+                        <th>操作</th>
+                    </tr>
+                </thread>
+
+                <tbody>
+                <tr th:each="d:${list}">
+                    <td th:text="${d.did}"></td>
+                    <td th:text="${d.dname}"></td>
+                    <td th:text="${d.price}"></td>
+                    <td th:text="${d.mername}"></td>
+                    <td th:text="${d.type}"></td>
+                    <td>
+                        <a th:href="@{/drug/toUpdateDrug(id=${d.did})}">更改</a> |
+                        <a th:href="@{/drug/del/{drugDid}(drugDid=${d.did})}" href="/drug/del/${d.did}">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

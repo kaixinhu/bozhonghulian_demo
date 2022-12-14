@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>登录注册页面</title>
+
+<link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+
+<div class="materialContainer">
+    <form action="/user/login">
+        <div class="box">
+            <div class="title">登录</div>
+            <div class="input">
+                <label for="account">用户名</label>
+                <input type="text" name="account" id="account" required>
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="pwd">密码</label>
+                <input type="password" name="pwd" id="pwd" required>
+                <span class="spin"></span>
+            </div>
+            <div class="button login">
+                <button>
+                    <span>登录</span>
+                    <i class="fa fa-check"></i>
+                </button>
+            </div>
+            <a href="javascript:" class="pass-forgot" th:text="${msg}"></a>
+        </div>
+    </form>
+    <form action="/user/register">
+        <div class="overbox">
+            <div class="material-button alt-2">
+                <span class="shape"></span>
+            </div>
+            <div class="title">注册</div>
+            <div class="input">
+                <label for="regname">用户名</label>
+                <input type="text" name="account" id="regname" required>
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="regpass">密码</label>
+                <input type="password" name="pwd" id="regpass" required>
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="reregpass">确认密码</label>
+                <input type="password" name="repwd" id="reregpass" required>
+                <span class="spin"></span>
+                <p id="msg_pwd" style="text-align: right;margin-top: 80px;font-weight: 700"></p>
+            </div>
+            <div class="button">
+                <button id="btn_register" disabled="disabled" style="cursor: not-allowed;">
+                    <span>注册</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/index.js"></script>
+
+</body>
+</html>

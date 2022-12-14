@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bozhonghulian.mappers.DrugMapper">
+
+    <!--增加一个Drug-->
+    <insert id="addDrug" parameterType="Drug">
+        insert into drug(did, dname, price, mername, type)
+        VALUES (#{did},#{dname},#{price},#{mername},#{type})
+    </insert>
+
+    <!--根据id删除一个Drug-->
+    <delete id="delDrugById">
+        delete from drug where did=#{id}
+    </delete>
+
+    <!--更新Drug-->
+    <update id="updateDrug" parameterType="Drug">
+        update drug
+        set dname = #{dname},price = #{price},mername = #{mername},type = #{type}
+        where did = #{did}
+    </update>
+
+    <!--根据id查询，返回一个Drug-->
+    <select id="queryDrugById" resultType="Drug">
+        select * from drug
+        where did = #{id}
+    </select>
+
+    <!--查询所有Book，返回List集合-->
+    <select id="queryAllDrug" resultType="Drug">
+        select did,
+               dname,
+               price,
+               mername,
+               type
+        from drug
+    </select>
+
+    <select id="queryDrugByName" resultType="Drug">
+        select did,
+               dname,
+               price,
+               mername,
+               type
+        from drug where dname like concat('%',#{dname},'%')
+    </select>
+
+</mapper>
